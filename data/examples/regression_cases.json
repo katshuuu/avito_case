@@ -1,0 +1,8 @@
+[
+  {"itemId": 1000012, "expectedDetectedMcIds": [106, 108, 109], "expectedShouldSplit": true},
+  {"itemId": 1000016, "expectedDetectedMcIds": [108, 110], "expectedShouldSplit": true},
+  {"itemId": 1002306, "expectedDetectedMcIds": [104], "expectedShouldSplit": false},
+  {"itemId": 1002461, "expectedDetectedMcIds": [104], "expectedShouldSplit": true},
+  {"itemId": 1001623, "expectedDetectedMcIds": [], "expectedShouldSplit": false},
+  {"itemId": 1000002, "expectedDetectedMcIds": [102, 103, 105, 108, 109, 110], "expectedShouldSplit": false}
+]

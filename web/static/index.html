@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Разбор объявления — микрокатегории и черновики</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="top-strip">
+    <div class="top-strip-inner">
+      <img src="/static/avito-logo.png" alt="Avito" class="strip-logo" />
+    </div>
+  </header>
+  <main class="wrap">
+    <h1>Анализ объявления</h1>
+    <p class="lead">
+      Укажите текст объявления и исходную микрокатегорию. Сервис определит упомянутые услуги,
+      нужен ли сплит, и при необходимости сформирует черновики.
+    </p>
+
+    <form id="form" class="card">
+      <label>
+        Исходный mcId
+        <input type="number" id="mcId" name="mcId" value="101" min="1" />
+      </label>
+      <label>
+        Название микрокатегории
+        <input type="text" id="mcTitle" name="mcTitle" value="Ремонт квартир и домов под ключ" />
+      </label>
+      <label>
+        Текст объявления
+        <textarea id="description" name="description" rows="8" placeholder="Вставьте описание..." required></textarea>
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" id="use_llm_drafts" name="use_llm_drafts" />
+        Улучшить тексты черновиков через LLM API (нужны OPENAI_API_KEY и ENABLE_LLM_DRAFTS=1)
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" id="async_drafts" name="async_drafts" checked />
+        Генерировать черновики асинхронно (быстрый ответ по категориям, тексты подтягиваются позже)
+      </label>
+      <button type="submit" id="submit">Анализировать</button>
+    </form>
+
+    <section id="error" class="error hidden" aria-live="polite"></section>
+
+    <section id="out" class="card hidden">
+      <h2>Результат</h2>
+      <div class="flags">
+        <span id="flag-split" class="badge"></span>
+      </div>
+      <h3>detectedMcIds</h3>
+      <pre id="detected" class="json-block"></pre>
+      <h3>shouldSplit</h3>
+      <pre id="shouldSplit" class="json-block"></pre>
+      <h3>drafts</h3>
+      <div id="drafts"></div>
+      <h3>Полный JSON</h3>
+      <pre id="raw" class="json-block full"></pre>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
