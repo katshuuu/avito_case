@@ -18,6 +18,16 @@
       Укажите текст объявления и исходную микрокатегорию. Сервис определит упомянутые услуги,
       нужен ли сплит, и при необходимости сформирует черновики.
     </p>
+    <section class="mode-switcher" aria-label="Переключатель режима">
+      <span class="mode-label mode-label-left active" id="mode-label-normal">Обычный режим</span>
+      <label class="switch">
+        <input type="checkbox" id="mode_toggle" />
+        <span class="switch-track">
+          <span class="switch-thumb"></span>
+        </span>
+      </label>
+      <span class="mode-label mode-label-right" id="mode-label-demo">Демо режим</span>
+    </section>
 
     <form id="form" class="card">
       <label>
@@ -40,10 +50,35 @@
         <input type="checkbox" id="async_drafts" name="async_drafts" checked />
         Генерировать черновики асинхронно (быстрый ответ по категориям, тексты подтягиваются позже)
       </label>
+      <div id="demo-sample-wrap" class="hidden">
+        <label>
+          Выберите готовый пример для демонстрации
+          <select id="demo_sample_id" class="demo-select"></select>
+        </label>
+      </div>
       <button type="submit" id="submit">Анализировать</button>
     </form>
 
     <section id="error" class="error hidden" aria-live="polite"></section>
+
+    <section id="demo-progress" class="card hidden">
+      <h2>Прогресс обработки</h2>
+      <div class="progress-track">
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="1">
+          <span class="dot">1</span>
+          <span class="label">Детекция услуг</span>
+        </div>
+        <div class="progress-step" data-step="2">
+          <span class="dot">2</span>
+          <span class="label">Решение по split</span>
+        </div>
+        <div class="progress-step" data-step="3">
+          <span class="dot">3</span>
+          <span class="label">Формирование результата</span>
+        </div>
+      </div>
+    </section>
 
     <section id="out" class="card hidden">
       <h2>Результат</h2>
@@ -58,6 +93,14 @@
       <div id="drafts"></div>
       <h3>Полный JSON</h3>
       <pre id="raw" class="json-block full"></pre>
+      <div id="download-wrap" class="download-wrap hidden">
+        <a id="download-link" class="download-link" href="#" download>Скачать файл с результатом (JSON)</a>
+      </div>
+    </section>
+
+    <section id="demo-steps" class="card hidden">
+      <h2>Демо-режим: как работает алгоритм</h2>
+      <div id="steps-list"></div>
     </section>
   </main>
   <script src="/static/app.js"></script>

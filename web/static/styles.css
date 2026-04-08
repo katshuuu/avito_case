@@ -76,6 +76,73 @@ h1 {
   font-size: 0.98rem;
 }
 
+.mode-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 1rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 12px;
+}
+
+.mode-label {
+  font-size: 0.86rem;
+  color: #7c8491;
+  font-weight: 700;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.mode-label.active {
+  color: #1f2329;
+  transform: translateY(-1px);
+}
+
+.switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.switch input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.switch-track {
+  width: 52px;
+  height: 28px;
+  background: #d8e0ea;
+  border-radius: 999px;
+  position: relative;
+  transition: background-color 0.25s ease;
+}
+
+.switch-thumb {
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%);
+  transition: transform 0.25s ease;
+}
+
+.switch input:checked + .switch-track {
+  background: var(--accent);
+}
+
+.switch input:checked + .switch-track .switch-thumb {
+  transform: translate(24px, -50%);
+}
+
 .card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -95,6 +162,7 @@ label {
 
 input[type="number"],
 input[type="text"],
+select,
 textarea {
   display: block;
   width: 100%;
@@ -110,6 +178,7 @@ textarea {
 
 input[type="number"]:focus,
 input[type="text"]:focus,
+select:focus,
 textarea:focus {
   outline: none;
   border-color: rgba(0, 162, 255, 0.6);
@@ -244,4 +313,120 @@ h3 {
 .draft-text {
   font-size: 0.95rem;
   white-space: pre-wrap;
+}
+
+.download-wrap {
+  margin-top: 12px;
+}
+
+.download-link {
+  display: inline-block;
+  background: #e9f5ff;
+  color: #006fb9;
+  text-decoration: none;
+  border: 1px solid #b9dfff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-weight: 700;
+}
+
+.download-link:hover {
+  background: #dff0ff;
+}
+
+.demo-select {
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.62rem 0.75rem;
+  border: 1px solid #d8e0e9;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.step-item {
+  border: 1px solid #e6ebf1;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.step-item h4 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+}
+
+.step-item p {
+  margin: 0 0 8px;
+  color: #434a56;
+}
+
+.progress-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.progress-line {
+  position: absolute;
+  top: 14px;
+  left: 28px;
+  right: 28px;
+  height: 3px;
+  background: #d9e7f5;
+  border-radius: 3px;
+}
+
+.progress-step {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.progress-step .dot {
+  width: 28px;
+  height: 28px;
+  margin: 0 auto 6px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef3f8;
+  border: 1px solid #d4ddea;
+  color: #7a8697;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.progress-step .label {
+  display: block;
+  font-size: 0.82rem;
+  color: #6f7783;
+}
+
+.progress-step.active .dot {
+  background: #00a2ff;
+  border-color: #00a2ff;
+  color: #fff;
+  animation: pulse 1s infinite;
+}
+
+.progress-step.done .dot {
+  background: #1f9d4a;
+  border-color: #1f9d4a;
+  color: #fff;
+}
+
+.progress-step.done .label,
+.progress-step.active .label {
+  color: #1f2329;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 162, 255, 0.35); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 162, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 162, 255, 0); }
 }
